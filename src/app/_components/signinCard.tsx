@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CustomCard from "./customCard";
 
 const SigninCard = () => {
@@ -22,8 +22,8 @@ const SigninCard = () => {
   return (
     <>
       <CustomCard
-        onEmailChange={(e: any) => setEmail(e.target.value)}
-        onPasswordChange={(e: any) => setPassword(e.target.value)}
+        onEmailChange={(e) => setEmail(e.target.value)}
+        onPasswordChange={(e) => setPassword(e.target.value)}
         onButtonClick={handleClick}
         title="Login"
         buttonName="SignIn"

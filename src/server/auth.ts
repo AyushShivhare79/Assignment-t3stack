@@ -95,8 +95,12 @@ export const authOptions: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: any) {
+      async authorize(credentials) {
         // Here have to parse for validation
+
+        if (!(credentials?.email || credentials?.password)) {
+          return null;
+        }
         const { email, password } = credentials;
 
         const user = await prisma.user.findFirst({
@@ -109,7 +113,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const isValidPassword = bcrypt.compare(password, user.password);
+        const isValidPassword = await bcrypt.compare(password, user.password);
 
         if (!isValidPassword) {
           return null;
