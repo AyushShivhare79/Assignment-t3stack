@@ -7,20 +7,27 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+import Link from "next/link";
 
 interface customCardProps {
   onEmailChange: React.ChangeEventHandler<HTMLInputElement>;
   onPasswordChange: React.ChangeEventHandler<HTMLInputElement>;
   onButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-  title: string
+  title: string;
   buttonName: string;
+  url: string;
+  redirectName: string;
+  footerText: string;
 }
 const CustomCard = ({
   onEmailChange,
   onPasswordChange,
   onButtonClick,
+  title,
   buttonName,
-  title
+  url,
+  redirectName,
+  footerText,
 }: customCardProps) => {
   return (
     <>
@@ -34,13 +41,20 @@ const CustomCard = ({
           <Input placeholder="Email" onChange={onEmailChange} />
           <Input placeholder="Password" onChange={onPasswordChange} />
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-2">
           <Button
             onClick={onButtonClick}
             className="flex w-full items-center justify-center"
           >
             {buttonName}
           </Button>
+
+          <div>
+            {footerText}
+            <Link href={url} className="text-blue-600">
+              {redirectName}
+            </Link>
+          </div>
         </CardFooter>
       </Card>
     </>

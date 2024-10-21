@@ -26,6 +26,9 @@ const SignupCard = () => {
         onButtonClick={handleClick}
         title="Create Account"
         buttonName="Signup"
+        redirectName="Login"
+        url="/signin"
+        footerText="Already have an account? "
       />
     </>
   );
