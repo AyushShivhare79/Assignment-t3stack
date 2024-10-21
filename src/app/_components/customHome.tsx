@@ -19,7 +19,7 @@ const CustomHome = () => {
               ? await signOut({ callbackUrl: "/signin" })
               : router.push("/signin")
           }
-          className="bg-blue-600 hover:bg-white hover:text-black"
+          className="h-10 w-32 rounded-xl bg-blue-600 text-2xl hover:bg-white hover:text-black"
         >
           {session ? "SignOut" : "SignIn"}
         </Button>
