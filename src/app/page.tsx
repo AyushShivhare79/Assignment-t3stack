@@ -7,10 +7,10 @@ import Signup from "./_components/signup";
 import SignupGoogle from "./_components/signupGoogle";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  // const hello = await api.signup.create.
+  // const session = await getServerAuthSession();
 
-  void api.post.getLatest.prefetch();
+  // void api.post.getLatest.prefetch();
 
   return (
     <HydrateClient>
