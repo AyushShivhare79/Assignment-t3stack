@@ -43,6 +43,7 @@ const prisma = new PrismaClient();
  */
 const adapter = PrismaAdapter(db) as Adapter;
 export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(db) as Adapter,
   // callbacks: {
   //   session: ({ session, user }) => ({
   //     ...session,
@@ -92,7 +93,7 @@ export const authOptions: NextAuthOptions = {
           label: "Email",
           type: "email",
         },
-        // password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
         // Here have to parse for validation
@@ -115,22 +116,20 @@ export const authOptions: NextAuthOptions = {
 
         const isValidPassword = bcrypt.compareSync(password, user.password);
 
-        if (!isValidPassword) {
-          return null;
-        }
+        // if (!isValidPassword) {
+        //   return null;
+        // }
 
         return {
           id: user.id,
           email: user.email,
-          // username: user.username,
         };
       },
     }),
-
-    // Google({
-    //   clientId: env.GOOGLE_CLIENT_ID,
-    //   clientSecret: env.GOOGLE_CLIENT_SECRET,
-    // }),
+    Google({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+    }),
 
     /**
      * ...add more providers here.
