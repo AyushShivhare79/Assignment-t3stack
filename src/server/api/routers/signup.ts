@@ -14,7 +14,7 @@ export const signUpRouter = createTRPCRouter({
       const saltRounds = 10;
       const hash = await bcrypt.hash(input.password, saltRounds);
       console.log("Hash: ", hash);
-      
+
       return ctx.db.user.create({
         data: {
           email: input.email,
