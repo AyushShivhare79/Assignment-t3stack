@@ -1,14 +1,5 @@
 "use client";
 
-import { Input } from "~/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
 import { useState } from "react";
 import CustomCard from "./customCard";
@@ -21,48 +12,21 @@ const SignupCard = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    createUser.mutate({ email, password });
+    const response = createUser.mutate({ email, password });
+    console.log("HERE: ", response);
   };
 
   return (
     <>
       {/* Use form from shadcn */}
       {/* Start changing */}
-      {JSON.stringify({ email, password })}
       <CustomCard
-        onEmailChange={(e: any) => setEmail(e.target.value)}
-        onPasswordChange={(e: any) => setPassword(e.target.value)}
+        onEmailChange={(e) => setEmail(e.target.value)}
+        onPasswordChange={(e) => setPassword(e.target.value)}
         onButtonClick={handleClick}
+        title="Create Account"
         buttonName="Signup"
       />
-
-      {/* <Card className="w-1/4">
-        <CardHeader className="flex items-center justify-center">
-          <CardTitle className="text-2xl">Create Account</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <Input
-            placeholder="Email"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
-          />
-          <Input
-            placeholder="Password"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
-          />
-        </CardContent>
-        <CardFooter>
-          <Button
-            onClick={handleClick}
-            className="flex w-full items-center justify-center"
-          >
-            Signup
-          </Button>
-        </CardFooter>
-      </Card> */}
     </>
   );
 };

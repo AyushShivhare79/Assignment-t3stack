@@ -1,5 +1,3 @@
-"use client";
-
 import { Input } from "~/components/ui/input";
 import {
   Card,
@@ -9,16 +7,28 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
-import { useState } from "react";
 
-const CustomCard = ({ onEmailChange, onPasswordChange, onButtonClick, buttonName }: any) => {
+interface customCardProps {
+  onEmailChange: React.ChangeEventHandler<HTMLInputElement>;
+  onPasswordChange: React.ChangeEventHandler<HTMLInputElement>;
+  onButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  title: string
+  buttonName: string;
+}
+const CustomCard = ({
+  onEmailChange,
+  onPasswordChange,
+  onButtonClick,
+  buttonName,
+  title
+}: customCardProps) => {
   return (
     <>
       {/* Use form from shadcn */}
 
       <Card className="w-1/4">
         <CardHeader className="flex items-center justify-center">
-          <CardTitle className="text-2xl">Create Account</CardTitle>
+          <CardTitle className="text-2xl">{title}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
           <Input placeholder="Email" onChange={onEmailChange} />

@@ -16,7 +16,7 @@ const SignupGoogle = () => {
   return (
     <>
       <div
-        className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white text-xl text-black hover:bg-blue-500 hover:text-white"
+        className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-4 text-xl text-black hover:bg-blue-600 hover:text-white"
         onClick={handleClick}
       >
         <FcGoogle className="text-5xl" />

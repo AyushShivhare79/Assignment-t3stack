@@ -21,13 +21,11 @@ const SigninCard = () => {
 
   return (
     <>
-      {/* Use form from shadcn */}
-      {/* Start changing */}
-      {JSON.stringify({ email, password })}
       <CustomCard
         onEmailChange={(e: any) => setEmail(e.target.value)}
         onPasswordChange={(e: any) => setPassword(e.target.value)}
         onButtonClick={handleClick}
+        title="Login"
         buttonName="SignIn"
       />
     </>
